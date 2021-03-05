@@ -1,0 +1,23 @@
+function [x,y,t]=fct_RK4_2D(x0,y0,tmin,tmax,pas,beta,f,g)
+
+
+t = tmin:pas:tmax;
+x = zeros(1,length(t));
+XRK2D(1) = x0;
+y = zeros(1,length(t));
+y(1) = y0;
+
+for k = 1:length(t)-1
+    
+    kf1 = f(t(k),x(k),y(k));
+    kg1 = g(t(k),x(k),y(k));
+    
+    kf2 = f(t(k) + pas / 2, x(k) + (pas / 2) * kf1, y(k) + (pas / 2) * kg1  );
+    kg2 = g(t(k) + pas / 2, x(k) + (pas / 2) * kf1, y(k) + (pas / 2) * kg1  );
+    
+    kf3 = f(t(k) + (pas/2),x(k) + h/2 * kf2, y(k) + h/2 * kg2);
+    kg3 = g(t(k) + (pas/2),x(k) + h/2 * kf2, y(k) + h/2 * kg2);
+    
+    kf4 = f(
+    
+    
