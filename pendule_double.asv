@@ -32,26 +32,25 @@ theta02=2*pi/3;  % angle initial (rad)
 thetap02=0;      % vitesse angulaire initiale (rad/s)
 
 %Calculs numériques
-[theta1,z1,theta2,z2,t]=fct_RK4_4D(theta01,thetap01,theta02,thetap02,tmin,tmax,pas,f1,f2,g1,g2);
+function [theta1,z1,theta2,z2,t]=fct_RK4_4D(theta01,thetap01,theta02,thetap02,tmin,tmax,pas,f,g,h,i);
 
 % affichage des résultats
 figure(1);
-xmin=-(l1+l2);xmax=(l1+l2);
-ymin=-(l1+l2);ymax=(l1+l2);
+xmin=-l;xmax=l;
+ymin=-l;ymax=l;
 tic;
-for k=1:65:length(theta1)
+for k=1:65:length(theta)
 % espace réel
 hold on
-x1=sin(theta1(k)) * l1;
-y1= -cos(theta1(k)) * l1;
-x2=x1+sin(theta2(k)) * l2;
-y2=y1 -cos(theta2(k)) * l2;
+x=sin(theta1(k)) * l1;
+y1=- cos(theta1(k)) * l1;
+x2=sin(theta2(k)) * l2;
+y2=- cos(theta2(k)) * l2;
 plot([0,x1],[0,y1],'Marker','o','MarkerFacecolor','r','MarkerSize',10);
-%plot([x1,x2],[y1,y2],'Marker','o','MarkerFacecolor','b','MarkerSize',10);
+plot([0,x2],[0,y2],'Marker','o','MarkerFacecolor','r','MarkerSize',10);
 axis('equal');
 axis(1.1*[xmin,xmax,ymin,ymax]);
 grid 'on';
-%t1=title('Double pendule par la méthode de Runge-Kutta 4');
-%set(t1,'interpreter','latex');
-end
+t1=title(strTitle);
+set(t1,'interpreter','latex');
 
