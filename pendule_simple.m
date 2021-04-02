@@ -30,7 +30,7 @@ theta0=2*pi/3;  % angle initial (rad)
 thetap0=0;      % vitesse angulaire initiale (rad/s)
 
 % choix de la méthode
-method=3;
+method=1;
     % 1 : Euler
     % 2 : Runge-Kutta ordre 2
     % 3 : Runge-Kutta ordre 4
@@ -72,6 +72,14 @@ axis(1.1*[xmin,xmax,ymin,ymax]);
 grid 'on';
 t1=title(strTitle);
 set(t1,'interpreter','latex');
+
+
+
+
+
+
+
+
 % espace des phases
 subplot(132);hold on;
 t3=title('Espace des phases');
