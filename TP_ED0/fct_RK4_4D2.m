@@ -1,4 +1,4 @@
-function [x,y,u,v,t]=fct_RK4_4D(x0,y0,u0,v0,tmin,tmax,pas,f,g,h,i)
+function [x,y,u,v,t]=fct_RK4_4D2(x0,y0,u0,v0,tmin,tmax,pas,f,g,h,i)
 
 
 t = tmin:pas:tmax;

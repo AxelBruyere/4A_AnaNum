@@ -11,12 +11,13 @@ gr=9.8;%acceleration de la pesanteur (m.s^-2)
 l1=1;%longueur du fil 1 (m)
 l2=2;%longueur du fil 2 (m)
 
-% autres paramètres
+% autres parametres
 
 tmin=0;     % instant initial
 tmax=20;  % instant final
 pas=0.001;  % pas de calcul
-fprintf('Durée de l''expérience physique : %1.2f\n',tmax-tmin);
+seuil = 0.00002; %seuil d'erreur d'Euler-Richardson
+fprintf('Duree de l''experience physique : %1.2f\n',tmax-tmin);
 
 % fonctions Y'=F(Y) avec ici Y=(theta,z) et F(Y)=(f,g)
 f1=@(t,theta1,theta2,z1,z2)(z1);
@@ -31,10 +32,19 @@ thetap01=0;      % vitesse angulaire initiale (rad/s)
 theta02=2*pi/3;  % angle initial (rad)
 thetap02=0;      % vitesse angulaire initiale (rad/s)
 
-%Calculs numériques
-[theta1,theta2,z1,z2,t]=fct_RK4_4D(theta01,theta02,thetap01,thetap02,tmin,tmax,pas,f1,f2,f3,f4);
+%Calculs numeriques
+switch 2
+    case 1
+        [theta1,theta2,z1,z2,t]=fct_RK4_4D2...
+            (theta01,theta02,thetap01,thetap02,tmin,tmax,pas,f1,f2,f3,f4);
+        t_pause = 0.02;
+    case 2
+        [theta1,theta2,z1,z2,t] = fct_Euler_Richardson_double_pendule ...
+            (theta01,theta02,thetap01,thetap02,tmin,tmax,pas,f3,f4,seuil);
+        t_pause = 0.02;
+end
 
-% affichage des résultats
+% affichage des resultats
 figure(1);
 xmin=-(l1+l2);xmax=(l1+l2);
 ymin=-(l1+l2);ymax=(l1+l2);
@@ -48,9 +58,9 @@ plot([0,x1,x2],[0,y1,y2],'Marker','o','MarkerFacecolor','b','MarkerSize',10);
 axis('equal');
 axis(1.1*[xmin,xmax,ymin,ymax]);
 grid 'on';
-%t1=title('Double pendule par la méthode de Runge-Kutta 4');
+%t1=title('Double pendule par la methode de Runge-Kutta 4');
 %set(t1,'interpreter','latex');
-pause(0.02)
+pause(t_pause)
 
 end
 

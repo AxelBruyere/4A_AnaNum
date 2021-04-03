@@ -30,7 +30,7 @@ switch 3  %%Choix du modele d'analyse
     [X,Y,t] = fct_RK4_2D_Kepler(x0,y0,vx0,vy0,tmin,tmax,h,f,g);
 
     case 3 % methode Euler-Richardson
-    [X,Y,t]= fct_Euler_Richardson(x0,y0,vx0,vy0,tmin,tmax,h,f,g,0.001);
+    [X,Y,t]= fct_Euler_Richardson(x0,y0,vx0,vy0,tmin,tmax,h,f,g,0.01);
     T_total=t(end);
 end
 
