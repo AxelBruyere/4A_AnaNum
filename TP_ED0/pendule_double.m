@@ -15,7 +15,7 @@ l2=2;%longueur du fil 2 (m)
 
 tmin=0;     % instant initial
 tmax=20;  % instant final
-pas=0.001;  % pas de calcul
+pas=0.0001;  % pas de calcul
 fprintf('Durée de l''expérience physique : %1.2f\n',tmax-tmin);
 
 % fonctions Y'=F(Y) avec ici Y=(theta,z) et F(Y)=(f,g)
@@ -42,7 +42,7 @@ tic;
 v=VideoWriter('seq_video2.avi');
 open(v);
 drawnow;
-for k=1:65:length(theta1)
+for k=1:300:length(theta1)
 x1=sin(theta1(k)) * l1;
 y1= -cos(theta1(k)) * l1;
 x2=x1+sin(theta2(k)) * l2;
@@ -52,7 +52,7 @@ axis('equal');
 axis(1.1*[xmin,xmax,ymin,ymax]);
 grid 'on';
 title('Double pendule par la méthode de Runge-Kutta 4');
-pause(0.01)
+pause(0.001)
 thisframe=getframe(gcf);
 writeVideo(v,thisframe);
 

@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 clc;clear variables;close all;
 
 % espace
@@ -50,7 +49,7 @@ for k = 2:m-1
         end
     end
     
-=======
+
 clear; close; clc;
 %%Exercice 4
 
@@ -99,44 +98,38 @@ end
 end
     f(i_s,j_s,k+1) = f(i_s,j_s,k+1) + tau^2 * sin(2*pi*nu*k*tau);
     f(i_slit,setdiff(1:end,j_slit),k+1) = 0;
->>>>>>> 2c4df9a9980452bbc169c067d8d1237debb901ec
+
 end
 
 
 figure(1);
 f=f/max(max(max(f)));
 [X,Y]=meshgrid(y,x);
-<<<<<<< HEAD
+
 v=VideoWriter('seq_video.avi');
 open(v);
 drawnow;
 
-=======
->>>>>>> 2c4df9a9980452bbc169c067d8d1237debb901ec
-for k=1:m-1
+
+for k=1:8:m-1
 surf(X,Y,f(:,:,k));
 xlabel('$y$','interpreter','latex');
 ylabel('$x$','interpreter','latex');
 zlb=zlabel('$f(x,y,t)$','interpreter','latex');zlb.Rotation=0;
 view(-30,50);
-<<<<<<< HEAD
 caxis([-1,1]); % échelle des couleurs
 zlim([-1,1]);
 pause(0.001);
 thisframe=getframe(gcf);
 writeVideo(v,thisframe);
-=======
 caxis([-1,1]); % Echelle des couleurs
 zlim([-1,1]);
 pause(0.001);
->>>>>>> 2c4df9a9980452bbc169c067d8d1237debb901ec
 end
 
 
 
-<<<<<<< HEAD
 close(v);
 
 
-=======
->>>>>>> 2c4df9a9980452bbc169c067d8d1237debb901ec
+end
