@@ -25,7 +25,8 @@ Y=[s1(t);s2(t)];
 Y=Y';
 [n,m]=size(Y);
 %%Matrice des donnees centrees 
-X = Y-mean(Y); 
+Ym = mean(Y);
+X = Y - Ym(ones(n, 1),:);
 %%Matrice de covariance
 M= X'*X/n;
 %%Diagonalisation de M
@@ -50,15 +51,15 @@ line(get(axh,'XLim'), [0 0], 'Color','k');
 line([0 0], get(axh,'YLim'), 'Color','k');
 
 %%Cercle des correlations
+subplot(122)
+hold on;
 S=ones(n,1)*std(X);
 Z=X./S;
 for j=1:m
     xx =  Z(:,j)'*Xstar(:,1) * 1/(n*sqrt(lambda(1)));
     yy =  Z(:,j)'*Xstar(:,2) * 1/(n*sqrt(lambda(2)));
+    plot(xx,yy,'o');
 end
-subplot(122)
-hold on;
-plot(xx,yy,'o');
 plot(cos(th),sin(th),'k');
 
 
