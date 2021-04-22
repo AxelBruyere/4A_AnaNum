@@ -61,6 +61,10 @@ for j=1:m
     plot(xx,yy,'o');
 end
 plot(cos(th),sin(th),'k');
+axis([-1.2 1.2 -1.2 1.2]);
+axh = gca;
+line(get(axh,'XLim'), [0 0], 'Color','k');
+line([0 0], get(axh,'YLim'), 'Color','k');
 
 
 

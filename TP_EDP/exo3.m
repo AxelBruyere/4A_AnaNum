@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+
 clc;clear variables;close all;
 
 %Récupération de l'image et de ses dimensions
@@ -75,9 +75,6 @@ title('Image débruitée par le modèle de Perona-Malik, diffusion lorentzienne'
 
 
 
-
-
-=======
 %%Exercice 3
 clear; close ; clc
 
@@ -141,6 +138,6 @@ title('Image chaleur');
 subplot(224)
 imshow(Ipm,'DisplayRange',[min(Ipm(:)),max(Ipm(:))]);
 title('Image Perona-Malik');
->>>>>>> 2c4df9a9980452bbc169c067d8d1237debb901ec
+
 
 
